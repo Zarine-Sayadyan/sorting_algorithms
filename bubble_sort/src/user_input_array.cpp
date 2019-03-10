@@ -3,7 +3,9 @@
 #include "bubble_sort.hpp"
 #include "user_input_array.hpp"
 #include "catch_error.hpp"
+#include "choice_ascending_descending.hpp"
 
+//run function when user inputs siza array and array
 void run2()
 {
     int* array;
@@ -17,11 +19,10 @@ void run2()
     array = new int[num];
     assert(array);
     for (int i = 0; i < num; ++i) {
-        std::cout << "Input element N " << i + 1 << std::endl;
+        std::cout << "N" << i + 1 << ": ";
         array[i] = catch_error();
     }
-    bubble_sort(array, num);
-    std::cout << "After sorted the list will be " << std::endl;
+    ascending_descending(array, num);
     print_array(array, num);
     delete[] array;
 }

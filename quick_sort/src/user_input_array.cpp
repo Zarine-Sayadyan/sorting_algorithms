@@ -3,7 +3,9 @@
 #include "quick_sort.hpp"
 #include "user_input_array.hpp"
 #include "catch_error.hpp"
+#include "choice_ascending_descending.hpp"
 
+//run function when user inputs siza array and array
 void run2()
 {
     int* array;
@@ -20,8 +22,7 @@ void run2()
         std::cout << "N" << i + 1 << ": ";
         array[i] = catch_error();
     }
-    quick_sort(array, 0, num - 1);
-    std::cout << "\nAfter sorted the list will be " << std::endl;
+    ascending_descending(array, 0, num - 1);
     print_array(array, num);
     delete[] array;
 }

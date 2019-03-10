@@ -3,7 +3,9 @@
 #include "merge_sort.hpp"
 #include "user_input_array.hpp"
 #include "catch_error.hpp"
+#include "choice_ascending_descending.hpp"
 
+//run function when user inputs siza array and array
 void run2()
 {
     int* array;
@@ -18,11 +20,10 @@ void run2()
     int* temp_array = new int[num];
     assert(array);
     for (int i = 0; i < num; ++i) {
-        std::cout << "N " << i + 1 << ": ";
+        std::cout << "N" << i + 1 << ": ";
         array[i] = catch_error();
     }
-    merge_sort(array, temp_array, 0, num - 1);
-    std::cout << "After sorted the list will be " << std::endl;
+    ascending_descending(array, temp_array, 0, num - 1);
     print_array(array, num);
     delete[] array;
     delete[] temp_array;

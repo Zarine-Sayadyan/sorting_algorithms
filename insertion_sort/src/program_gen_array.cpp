@@ -3,7 +3,9 @@
 #include <stdlib.h>
 #include "insertion_sort.hpp"
 #include "program_gen_array.hpp"
+#include "choice_ascending_descending.hpp"
 
+//run function when program generates array
 void run1()
 {
     int array_size = 15;
@@ -16,7 +18,6 @@ void run1()
     } 
     std::cout << "Array before sorting: " << std::endl;  
     print_array(gen_array, array_size);
-    std::cout << "Array after sorting: " << std::endl;  
-    insertion_sort(gen_array, array_size);
+    ascending_descending(gen_array, array_size);
     print_array(gen_array, array_size);
 }
