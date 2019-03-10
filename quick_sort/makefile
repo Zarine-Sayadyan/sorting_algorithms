@@ -19,6 +19,7 @@ bin/quick_sort : $(OBJECTS) ./bin
 ./bin:
 	mkdir -p bin
 
+.PHONY : clean
 clean: 
 	rm -rf ./obj  ./bin
 
