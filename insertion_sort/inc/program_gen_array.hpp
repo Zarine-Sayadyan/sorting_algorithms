@@ -1,2 +1,2 @@
 
-void run1();
+void generate_random_data_and_run();

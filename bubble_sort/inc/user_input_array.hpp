@@ -1,3 +1,3 @@
 
-void run2();
+void get_user_input_and_run();
 

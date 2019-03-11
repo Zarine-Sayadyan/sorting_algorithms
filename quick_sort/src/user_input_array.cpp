@@ -6,14 +6,18 @@
 #include "choice_ascending_descending.hpp"
 
 //run function when user inputs siza array and array
-void run2()
+void get_user_input_and_run()
 {
     int* array;
     int num;
     std::cout << "Enter natural number of elements. " << std::endl;
     num = catch_error();
+    while (0 == num) {
+        std::cout << "Incorrect input, try again:" << std::endl;
+        num = catch_error();
+    }
     if (num < 0) {
-        std::cout << "You input negativ number, the program will not take minus. " << std::endl; 
+        std::cout << "You input negative number, the program will not take minus. " << std::endl; 
         num *= -1;
     }
     array = new int[num];

@@ -6,7 +6,7 @@
 #include "choice_ascending_descending.hpp"
 
 //run function when program generates array
-void run1()
+void generate_random_data_and_run()
 {
     int array_size = 15;
     int gen_array[array_size] = {0};

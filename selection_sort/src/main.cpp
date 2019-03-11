@@ -6,26 +6,21 @@
 int main()
 {
     int choice = 0;
-    bool b = false;
     std::cout << "\n-------------------It's selection sort program-------------------\n" << std::endl;
-    std::cout << "Input number 1 and the program generate a random array.\n";
-    std::cout << "Input number 2 and you enter the size of array and array members.\n";
+    std::cout << "Input 1 and the program will generate random array.\n";
+    std::cout << "Input 2 and then enter the size and elements of array.\n";
     choice = catch_error();
-    while(b == false) {
-        switch (choice)
-        {
-            case 1: run1();
-                    b = true;
-                    break;
-            case 2: run2();
-                    b = true;
-                    break;
-            default : b = false;
-                      std::cout << "Incorrect input." << std::endl;
-                      choice = catch_error();
-                      break;
-       }
-    }    
+    while(choice != 1 && choice != 2 ) {
+        std::cout << "Incorrect input, try again." << std::endl;
+        choice = catch_error();
+    }
+    switch (choice)
+    {
+        case 1: generate_random_data_and_run();
+                break;
+        case 2: get_user_input_and_run();
+                break;
+     }
     return 0;
 }
 
