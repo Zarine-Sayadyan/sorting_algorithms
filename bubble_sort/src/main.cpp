@@ -1,7 +1,5 @@
 #include <iostream>
-#include "program_gen_array.hpp"
-#include "user_input_array.hpp"
-#include "catch_error.hpp"
+#include "bubble_sort_run.hpp"
 
 int main()
 {
