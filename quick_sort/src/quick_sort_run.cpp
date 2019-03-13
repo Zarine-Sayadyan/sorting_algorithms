@@ -13,10 +13,10 @@ void generate_random_data_and_run()
     int gen_array[array_size] = {0};
     srand(time(NULL));
     for (int i = 0; i < array_size; ++i) {
-       int num = rand() % 200;
-       gen_array[i] = num;
+        int num = rand() % 200;
+        gen_array[i] = num;
     } 
-    std::cout << "Array before sorting: " << std::endl;  
+    std::cout << "Array before sorting:" << std::endl;  
     print_array(gen_array, array_size);
     ascending_descending(gen_array, 0, array_size - 1);
     print_array(gen_array, array_size);
@@ -25,16 +25,12 @@ void generate_random_data_and_run()
 void get_user_input_and_run()
 {
     int* array;
-    int num;
-    std::cout << "Enter natural number of elements. " << std::endl;
+    int num = 0;
+    std::cout << "Enter natural number of elements." << std::endl;
     num = catch_error();
-    while (0 == num) {
+    while (num <= 0) {
         std::cout << "Incorrect input, try again:" << std::endl;
         num = catch_error();
-    }
-    if (num < 0) {
-        std::cout << "You input negative number, the program will not take minus. " << std::endl;
-        num *= -1;
     }
     array = new int[num];
     assert(array);
@@ -47,7 +43,7 @@ void get_user_input_and_run()
     delete[] array;
 }
 //user choices sort in ascending or descending order
-void ascending_descending(int* array, int left, int right)
+void ascending_descending(int* array, const int& left, const int& right)
 {
     int choice = 0;
     std::cout << "Input 1 to sort in ascending order.\n";
@@ -61,24 +57,24 @@ void ascending_descending(int* array, int left, int right)
     switch (choice)
     {
         case 1: std::cout << "Array after sorting in ascending order:\n ";
-                quick_sort_ascending(array, left, right);
+                quick_sort_ascending_descending(array, left, right, 1);
                 break;
         case 2: std::cout << "Array after sorting in descending order:\n ";
-                quick_sort_descending(array, left, right);
+                quick_sort_ascending_descending(array, left, right, 2);
                 break;
         case 3: std::cout << "Array after sorting in ascending order:\n";
-                quick_sort_ascending(array, left, right);
+                quick_sort_ascending_descending(array, left, right, 1);
                 print_array(array, right + 1);
                 std::cout << "Array after sorting in descending order:\n";
-                quick_sort_descending(array, left, right);
+                quick_sort_ascending_descending(array, left, right, 2);
                 break;
     }
 }
 //cycle for catch error
-void cycle_for_catch_error(std::string input_number, int start, bool& fl)
+void cycle_for_catch_error(std::string input_number, const int& start, bool& fl)
 {
     for (int i = start; i < input_number.size(); ++i) {
-        if(input_number[i] < '0' || input_number[i] > '9') {
+        if (input_number[i] < '0' || input_number[i] > '9') {
             std::cout << "Incorrect input, try again." << std::endl;
             fl = true;
             break;
@@ -91,7 +87,7 @@ int catch_error()
     bool fl = false;
     int result = 0;
     std::string input_number("");
-    do{
+    do {
         getline(std::cin, input_number);
         fl = false;
         while (0 == input_number.size()) {
@@ -99,12 +95,12 @@ int catch_error()
             getline(std::cin, input_number);
             fl = false;
         }
-        if (input_number[0] == '-') {
+        if (input_number[0] == '-' && input_number.size() > 1) {
             cycle_for_catch_error(input_number, 1, fl);
         } else {
             cycle_for_catch_error(input_number, 0, fl);
         }
-    } while(fl == true);
+    } while (fl == true);
     std::stringstream str_int(input_number);
     str_int >> result;
     return result;

@@ -1,6 +1,5 @@
 
 void swap(int*, int*);
-void selection_sort_ascending(int*, int);
-void selection_sort_descending(int*, int);
-void print_array(int*, int);
+void selection_sort_ascending_descending(int*, const int&, const int&);
+void print_array(int*, const int&);
 

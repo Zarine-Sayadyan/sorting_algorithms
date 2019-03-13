@@ -8,30 +8,21 @@ void swap(int* num1, int* num2)
     *num1 = *num2;
     *num2 = temp;
 }
-//selection sorting in ascending order
-void selection_sort_ascending(int* array, int size)
+//selection sort in ascending and descending orders
+void selection_sort_ascending_descending(int* array, const int& size, const int& asc_desc)
 {
     for (int i = 0; i < size - 1; ++i) {
-        int min = array[i];
+        int min_max = array[i];
         int loc = i;
+        bool b = true;
         for (int j = i + 1; j < size; ++j) {
-            if( min > array[j]) {
-                min = array[j];
-                loc = j;
+            if (1 == asc_desc) {
+                b =  min_max > array[j];
+            } else if (2 == asc_desc) {
+                b =  min_max < array[j];
             }
-        }
-        swap(&array[i], &array[loc]);
-    }
-}
-//selection sorting in descending order
-void selection_sort_descending(int* array, int size)
-{
-    for (int i = 0; i < size - 1; ++i) {
-        int max = array[i];
-        int loc = i;
-        for (int j = i + 1; j < size; ++j) {
-            if( max < array[j]) {
-                max = array[j];
+            if(b) {
+                min_max = array[j];
                 loc = j;
             }
         }
@@ -39,7 +30,7 @@ void selection_sort_descending(int* array, int size)
     }
 }
 //print array
-void print_array(int* array, int size)
+void print_array(int* array, const int& size)
 {
     for (int i = 0; i < size; ++i) {
         std::cout << array[i] << "  ";

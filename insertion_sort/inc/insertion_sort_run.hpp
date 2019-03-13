@@ -1,7 +1,7 @@
 
 void generate_random_data_and_run();
 void get_user_input_and_run();
-void cycle_for_catch_error(std::string, int, bool&);
+void cycle_for_catch_error(std::string, const int&, bool&);
 int catch_error();
-void ascending_descending(int*, int);
+void ascending_descending(int*, const int&);
 

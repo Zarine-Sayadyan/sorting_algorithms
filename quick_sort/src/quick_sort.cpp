@@ -1,38 +1,14 @@
 #include <iostream>
 #include "quick_sort.hpp"
 
-//quick sorting in ascending order
-void quick_sort_ascending(int* array, int left, int right)
+void swap(int* num1, int* num2)
 {
-    int i = left;
-    int j = right;
-    int temp = 0;
-    int mid = (left + right) / 2;
-    int pivot = array[mid];
-    while (i < j) {
-        while (array[i] < pivot) {
-            ++i;
-        }
-        while (array[j] > pivot) {
-            --j;
-        }
-        if (i <= j) {
-            temp = array[i];
-            array[i] = array[j];
-            array[j] = temp;
-            ++i;
-            --j;
-        }
-    }
-    if (left < j) {
-        quick_sort_ascending(array, left, j);
-    }
-    if (i < right) {
-        quick_sort_ascending(array, i, right);
-    }
+    int temp = *num1;
+    *num1 = *num2;
+    *num2 = temp;
 }
-//quick sorting in descending order
-void quick_sort_descending(int* array, int left, int right)
+//quick sort in ascending and descending orders
+void quick_sort_ascending_descending(int* array, const int& left, const int& right, const int& asc_desc)
 {
     int i = left;
     int j = right;
@@ -40,29 +16,36 @@ void quick_sort_descending(int* array, int left, int right)
     int mid = (left + right) / 2;
     int pivot = array[mid];
     while (i < j) {
-        while (array[i] > pivot) {
-            ++i;
-        }
-        while (array[j] < pivot) {
-            --j;
+        if (1 == asc_desc) {
+            while (array[i] < pivot) {
+                ++i;
+            }
+            while (array[j] > pivot) {
+                --j;
+            }
+        } else if (2 == asc_desc) {
+            while (array[i] > pivot) {
+                ++i;
+            }
+            while (array[j] < pivot) {
+                --j;
+            }
         }
         if (i <= j) {
-            temp = array[i];
-            array[i] = array[j];
-            array[j] = temp;
+            swap(&array[i], &array[j]);
             ++i;
             --j;
         }
     }
     if (left < j) {
-        quick_sort_descending(array, left, j);
+        quick_sort_ascending_descending(array, left, j, asc_desc);
     }
     if (i < right) {
-        quick_sort_descending(array, i, right);
+        quick_sort_ascending_descending(array, i, right, asc_desc);
     }
 }
 //print array
-void print_array(int* array, int size)
+void print_array(int* array, const int& size)
 {
     for (int i = 0; i < size; ++i) {
         std::cout << array[i] << "  ";

@@ -1,5 +1,5 @@
 
-void quick_sort_ascending(int*, int, int);
-void quick_sort_descending(int*, int, int);
-void print_array(int*, int);
+void swap(int*, int*);
+void quick_sort_ascending_descending(int*, const int&, const int&, const int&);
+void print_array(int*, const int&);
 
