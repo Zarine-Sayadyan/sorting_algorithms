@@ -24,7 +24,7 @@ void generate_random_data_and_run()
 //run function when user inputs array's size and elements
 void get_user_input_and_run()
 {
-    int* array;
+    int* array = NULL;
     int num = 0;
     std::cout << "Enter natural number of elements." << std::endl;
     num = catch_error();
